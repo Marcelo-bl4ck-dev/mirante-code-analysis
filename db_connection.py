@@ -2,6 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import Base
 import threading
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from the .env file
+load_dotenv()
 
 class Database:
     _instance = None
@@ -15,7 +20,18 @@ class Database:
         return cls._instance
 
     def _init_db(self):
-        self.engine = create_engine("sqlite:///analysis.db", echo=True)
+        # Read the environment variables
+        db_user = os.getenv("DB_USER")
+        db_password = os.getenv("DB_PASSWORD")
+        db_host = os.getenv("DB_HOST")
+        db_port = os.getenv("DB_PORT")
+        db_name = os.getenv("DB_NAME")
+        
+        # Construct the PostgreSQL connection string
+        connection_string = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+
+        # Create the engine
+        self.engine = create_engine(connection_string, echo=True)
         self.SessionLocal = sessionmaker(bind=self.engine)
         Base.metadata.create_all(self.engine)
 
