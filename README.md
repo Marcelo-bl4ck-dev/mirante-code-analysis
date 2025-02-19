@@ -20,7 +20,7 @@ It analyzes source code and provides recommendations for improvement based on be
 ### Key Features:
 - **/health**: Endpoint to check the agent's status.
 - **/analyze-code**: Endpoint to submit source code and receive improvement suggestions.
-- **/crewai_code_analyzer: Endpoint to submit source code and start crewai agents.
+- **/crewai_code_analyzer**: Endpoint to submit source code and start crewai agents.
 - **/analysis**: Endpoint to retrieve all the analyses performed, which are stored in a PostgreSQL database.
 
 ### APIs & Integrations:
