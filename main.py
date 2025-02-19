@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 from controller.analyze_code import analyze_code, get_all_analysis
+from controller.crewai_analyze_code import crewai_analyze_code
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
@@ -22,6 +23,11 @@ def agent_health():
 @app.post("/analyze-code")
 async def code_suggestions(code: CodeRequest):
     analysis = analyze_code(code)
+    return {"message": "Analysis finished", "analysis": analysis, "code_snippet": code}
+
+@app.post("/crewai-analyze-code")
+async def crewai_code_suggestions(code: CodeRequest):
+    analysis = crewai_analyze_code(code)
     return {"message": "Analysis finished", "analysis": analysis, "code_snippet": code}
 
 @app.get("/analysis")
