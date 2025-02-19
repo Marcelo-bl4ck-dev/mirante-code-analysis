@@ -80,5 +80,18 @@ my_crew = Crew(
 
 def crewai_analyze_code(code):
     crew_output = my_crew.kickoff(inputs={"code": str(code)})
-    print(f"Raw Output: {crew_output.raw}")
+
+    # Get a session
+    session = db_instance.get_session()
+
+    # Insert a record
+    new_analysis = AnalysisHistory(
+        code_snippet=f"{code}",
+        suggestion=crew_output.raw["generate_report"]["output"]
+    )
+
+    session.add(new_analysis)
+    session.commit()
+    session.close()
+
     return crew_output.raw
