@@ -91,6 +91,7 @@ DB_NAME=analysis
 - **FastAPI**: Framework para criação de APIs rápidas e eficientes em Python.
 - **SQLAlchemy**: ORM (Object Relational Mapper) utilizado para interagir com o banco de dados PostgreSQL.
 - **GeminiAI**: API de inteligência artificial utilizada para fornecer sugestões de melhoria de código.
+- **CrewAI**: Plataforma de múltiplos agents utilizada para criar agents que executam tasks para atingir o objetivo do projeto.
 - 
 ## 7. Project Structure
 
@@ -98,6 +99,7 @@ A estrutura do projeto é a seguinte:
 ```bash
 /controller
   ├── analyze_code.py
+  ├── crewai_analyze_code.py
 
 /db_connection.py
 /models.py
