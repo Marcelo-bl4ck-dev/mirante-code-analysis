@@ -106,6 +106,7 @@ A estrutura do projeto é a seguinte:
 main.py
 ```
 - **/controller/analyze_code.py**: Contém a lógica para lidar com as requisições de análise de código.
+- **/controller/crewai_analyze_code.py**: Contém a lógica para criar uma crew, agents e tasks.
 - **/db_connection.py**: Gerencia a conexão com o banco de dados PostgreSQL.
 - **/models.py**: Define os modelos de dados e o esquema para os resultados das análises.
 - **main.py**: Inicia o servidor FastAPI e expõe os endpoints da API.
