@@ -1,3 +1,8 @@
+Update 19/02 - New feature
+
+Adicionado endpoint que utiliza crewai, utilizando modelo da OpenAI (default).
+------
+
 # Agente Autônomo para Sugestão de Melhorias de Código
 
 ## 1. Project Overview
