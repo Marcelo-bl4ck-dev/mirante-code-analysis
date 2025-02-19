@@ -1,6 +1,4 @@
-Update 19/02 - New feature
 
-Adicionado endpoint que utiliza crewai, utilizando modelo da OpenAI (default).
 ------
 
 # Agente Autônomo para Sugestão de Melhorias de Código
@@ -8,7 +6,9 @@ Adicionado endpoint que utiliza crewai, utilizando modelo da OpenAI (default).
 ## 1. Project Overview
 
 **What is your project about?**  
-This project is an **Autonomous Agent** designed to provide code improvement suggestions using **Gemini AI**.
+This project consists in an API that has 2 main endpoints: <br>
+/code_analyzer -> which connects with GeminiAI in order to fetch improvement recommendations for a given python code
+/crewai_code_analyzer -> which uses crewai in order to do 3 things: 1. fetch recommendations; 2. implement a code with found suggestions; 3. generate a report with everything that was done 
 
 **What problem does it solve or what goal does it achieve?**  
 It analyzes source code and provides recommendations for improvement based on best programming practices.
@@ -20,6 +20,7 @@ It analyzes source code and provides recommendations for improvement based on be
 ### Key Features:
 - **/health**: Endpoint to check the agent's status.
 - **/analyze-code**: Endpoint to submit source code and receive improvement suggestions.
+- **/crewai_code_analyzer: Endpoint to submit source code and start crewai agents.
 - **/analysis**: Endpoint to retrieve all the analyses performed, which are stored in a PostgreSQL database.
 
 ### APIs & Integrations:
@@ -50,7 +51,7 @@ Here’s an example of how to use the **/analysis** endpoint with a **POST** req
 
 ```bash
 curl --request POST \
-  --url http://localhost:8000/analysis \
+  --url http://localhost:8000/crewai_code_analyzer \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: insomnia/9.2.0' \
   --data '{
